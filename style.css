@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(73, 37, 157);
+}
+
+#header {
+    color:white;
+    text-align: center;
+}
+
+.text {
+    color: white;
+}
+
+#header-img {
+    width: 50%;
+    height: auto;
+}
+
+.container {
+    text-align: center;
+}
+
+.ul-container {
+    margin-top: 50px;
+    width: 50%;
+}
+
+ul {
+    text-align: left;
+}
