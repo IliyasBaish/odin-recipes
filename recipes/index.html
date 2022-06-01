@@ -51,6 +51,32 @@
         }
 
         document.addEventListener("click", printMousePos);
+        
+        
+        function PicElement(backPic, linkedPics, coordinates) {
+            let pic = Object.create(constructorObject)
+            pic.backPic = backPic;
+            pic.linkedPics = linkedPics;
+            pic.coordinates = coordinates;
+            return pic;
+        }
+
+        function picClickEvent(event) {
+            let xPos = event.clientX;
+            let yPos = event.clientY;
+
+            let currentPicXPos = getOffset(currentPic).left;
+            let currentPicYPos = getOffset(currentPic).top;
+
+            if((xPos > currentPicXPos && yPos) > (currentPicYPos + currentPic.offsetWidth*0.9) && (currentPicYPos + currentPic.offsetWidth)) {
+                currentPic = currentPic.backPic;
+            }
+            for(let i = 0; i < currentPic.length; i++) {
+                if((xPos > currentPicXPos + currentPic.offsetWidth * currentPic.linkedPics[i].coordinates.left) && (xPos < currentPicXPos + currentPic.offsetWidth * currentPic.linkedPics[i].coordinates.right) && (yPos > currentPicYPos + currentPic.offsetHeight * currentPic.linkedPics[i].coordinates.top) && (yPos < currentPicYPos + currentPic.offsetHeight * currentPic.linkedPics[i].coordinates.bottom)) {
+                    currentPic = currentPic.linkedPics[i];
+                }
+            }
+        }
     </script>
 </body>
 </html>
